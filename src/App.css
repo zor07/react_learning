@@ -12,21 +12,3 @@
   grid-template-columns: 2fr 10fr;
 }
 
-.header {
-  grid-area: h;
-  background-color: beige;
-}
-
-.header img {
-  width: 100px;
-}
-
-.nav {
-  grid-area: n;
-  background-color: azure;
-}
-
-.content {
-  grid-area: c;
-  background-color: burlywood;
-}
