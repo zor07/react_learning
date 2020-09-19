@@ -1,3 +1,7 @@
 .item {
     color: darkslateblue;
 }
+
+.item img {
+    width: 250px;
+}
