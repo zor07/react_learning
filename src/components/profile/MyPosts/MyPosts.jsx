@@ -1,22 +1,18 @@
 import React from "react";
 import css from './MyPosts.module.css';
+import Post from "./Post/Post";
 
 const MyPosts = () => {
-
     return (
-        <div className='posts'>
-            My posts
+        <div>
+
             <div>
                 <textarea></textarea>
                 <button>Add Post</button>
-                <button>Remove</button>
             </div>
-            <div className={css.item}>
-                <img src='https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png'/>
-                post 1asd
-            </div>
-            <div>
-                post 2
+            <div className={css.posts}>
+                <Post message='Hello world!' likes={25} />
+                <Post message="It's my new post!" likes={5}/>
             </div>
         </div>
     );
