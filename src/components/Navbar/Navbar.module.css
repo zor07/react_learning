@@ -1,17 +1,19 @@
 .nav {
     grid-area: nav;
     background-color: darkslategrey;
+    padding: 20px;
 }
 
 .item {
     color: white;
 }
 
-.item.active {
-    font-style: oblique;
-    font-weight: bold;
+.item a {
+    color: white;
+    text-decoration: none;
 }
 
-.nav a {
-    color: white;
+.item .active {
+    color: cornsilk;
+    font-weight: bold;
 }
