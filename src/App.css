@@ -1,15 +1,20 @@
 .app-wrapper {
-  width: 1200px;
-  margin: 0 auto;
+    width: 1200px;
+    margin: 0 auto;
 
-  display: grid;
+    display: grid;
 
-  grid-template-areas:
+    grid-template-areas:
     "head head"
-    "nav content" ;
+    "nav content";
 
-  grid-gap: 10px;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+}
+
+.app-wrapper-content {
+    grid-area: content;
+    background-color: lightblue;
 }
 
