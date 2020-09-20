@@ -11,3 +11,7 @@
     font-style: oblique;
     font-weight: bold;
 }
+
+.nav a {
+    color: white;
+}
