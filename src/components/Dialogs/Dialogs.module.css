@@ -7,10 +7,14 @@
     padding: 10px;
 }
 
-.dialogItems .active {
-    color: cornsilk;
+.dialogItems .dialog {
+    text-decoration: none;
+    color: darkblue;
 }
 
+.dialogItems .active {
+    color: purple;
+}
 
 .messages {
     padding: 10px;
