@@ -1,0 +1,9 @@
+.friendsList {
+    display: grid;
+    grid-template-columns: 4fr 4fr 4fr;
+}
+
+.friends {
+    margin-top:100px;
+    color: cornsilk;
+}
