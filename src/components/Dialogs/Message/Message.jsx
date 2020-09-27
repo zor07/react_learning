@@ -1,9 +1,14 @@
 import React from "react";
-import css from './../Dialogs.module.css';
+import css from './Message.module.css';
 
 const Message = (props) => {
     return (
-        <div className={css.message}>{props.message}</div>
+        <div className={css.messageBox}>
+                <div className={css.message + ' ' + (props.state.income ? css.income : css.outcome)}>
+                    <b>{props.state.sender}:</b><br/>
+                    {props.state.message}
+                </div>
+        </div>
     );
 };
 

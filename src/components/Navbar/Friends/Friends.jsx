@@ -1,11 +1,11 @@
 import React from "react";
 import css from './Friends.module.css'
-import Friend from "./Friend/Friend";
+import User from "./User/User";
 
 let Friends = (props) => {
-    debugger;
+
     let friendsElements = props.state
-        .map( (friend) => <Friend name={friend.name} avaUrl={friend.avaUrl} /> );
+        .map( (user) => <User state={user} /> );
 
     return (
         <div className={css.friends}>

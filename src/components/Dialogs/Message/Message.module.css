@@ -1,0 +1,20 @@
+.messageBox {
+    border: 1px solid darkslategrey;
+    margin: 15px;
+    display: grid;
+    grid-template-columns: 12fr;
+    border-radius: 25px;
+}
+
+.message {
+    padding:10px;
+    align-self: center;
+}
+
+.income {
+    justify-self: start;
+}
+
+.outcome {
+    justify-self: end;
+}

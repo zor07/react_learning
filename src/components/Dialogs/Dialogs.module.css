@@ -1,6 +1,6 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 1fr 9fr;
 }
 
 .dialogs .dialogItems {
@@ -12,16 +12,17 @@
     color: darkblue;
 }
 
+.vl {
+    border-left: 6px solid darkslategrey;
+    height: 100%;
+}
+
 .dialogItems .active {
     color: purple;
 }
 
 .messages {
     padding: 10px;
-}
-
-.messages .message {
-
 }
 
 
