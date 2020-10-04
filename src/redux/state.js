@@ -21,7 +21,8 @@ let state = {
             {id: 4, message: 'Все равно узнаешь...', sender:'Me', income: false},
             {id: 5, message: 'Это твоя лучшая зима...', sender:'Pasha', income: true},
             {id: 6, message: 'Все хорошо?', sender:'Me', income: false}
-        ]
+        ],
+        newMessageText:''
     },
     sidebar: {
         friendList: [
@@ -33,12 +34,33 @@ let state = {
     }
 }
 
+window.state = state;
+
+export let updateNewMessageText = (text) => {
+    state.dialogsPage.newMessageText = text;
+    rerenderEntireTree(state);
+}
+
+export let sendMessage = (text) => {
+    // debugger;
+    let newMessage = {
+        id: state.dialogsPage.messages.length,
+        message: text,
+        sender:'Me',
+        income: false
+    };
+
+    state.dialogsPage.messages.push(newMessage);
+    state.dialogsPage.newMessageText = '';
+    rerenderEntireTree(state);
+}
+
 export let updateNewPostText = (text) => {
     state.profilePage.newPostText=text;
     rerenderEntireTree(state);
 }
 
-let addPost = (postMessage) => {
+export let addPost = (postMessage) => {
     let newPost = {
         id: 3,
         message: postMessage,
@@ -50,5 +72,4 @@ let addPost = (postMessage) => {
     rerenderEntireTree(state);
 };
 
-export {addPost};
 export default state;
