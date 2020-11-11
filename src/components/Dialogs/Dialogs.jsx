@@ -17,12 +17,12 @@ const Dialogs = (props) => {
 
     let onChangeNewMessageText = () => {
         let text = newMessageElement.current.value;
-        props.updateNewMessageText(text);
+        props.store.updateNewMessageText(text);
     }
 
     let sendMessage = () => {
         let text = newMessageElement.current.value;
-        props.sendMessage(text);
+        props.store.sendMessage(text);
     };
 
     return (
