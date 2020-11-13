@@ -38,9 +38,9 @@ let store = {
         return this._state;
     },
 
-    updateNewMessageText(text) {
+    updateNewMessageText(text)  {
         this.getState().dialogsPage.newMessageText=text;
-        this._rerenderEntireTree();
+        this._callSubscriber();
     },
 
     sendMessage(text) {
@@ -53,15 +53,16 @@ let store = {
 
         this.getState().dialogsPage.messages.push(newMessage);
         this.getState().dialogsPage.newMessageText = '';
-        this._rerenderEntireTree();
+        this._callSubscriber();
     },
 
     updateNewPostText(text) {
         this.getState().profilePage.newPostText=text;
-        this._rerenderEntireTree();
+        this._callSubscriber();
     },
 
     addPost(postMessage) {
+        debugger;
         let newPost = {
             id: 3,
             message: postMessage,
@@ -70,18 +71,18 @@ let store = {
 
         this.getState().profilePage.posts.push(newPost);
         this.getState().profilePage.newPostText='';
-        this._rerenderEntireTree();
+        this._callSubscriber();
     },
 
     subscribe(observer) {
-        window.state = this._state;
-        this._rerenderEntireTree = observer;
+        this._callSubscriber = observer;
     },
 
-    _rerenderEntireTree() {
+    _callSubscriber() {
         console.log('State changed');
     }
 
 };
 
 export default store;
+window.store = store;

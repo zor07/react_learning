@@ -11,12 +11,12 @@ const MyPosts = (props) => {
 
     let onChangeNewPostText = () => {
         let text = newPostElement.current.value;
-        props.store.updateNewPostText(text);
+        props.updateNewPostText(text);
     }
 
     let addPost = () => {
         let text = newPostElement.current.value;
-        props.store.addPost(text);
+        props.addPost(text);
     };
 
     return (
