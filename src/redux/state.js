@@ -33,53 +33,49 @@ let store = {
             ]
         }
     },
+    _callSubscriber() {
+        console.log('State changed');
+    },
 
     getState() {
         return this._state;
     },
-
-    updateNewMessageText(text)  {
-        this.getState().dialogsPage.newMessageText=text;
-        this._callSubscriber();
-    },
-
-    sendMessage(text) {
-        let newMessage = {
-            id: this.getState().dialogsPage.messages.length,
-            message: text,
-            sender:'Me',
-            income: false
-        };
-
-        this.getState().dialogsPage.messages.push(newMessage);
-        this.getState().dialogsPage.newMessageText = '';
-        this._callSubscriber();
-    },
-
-    updateNewPostText(text) {
-        this.getState().profilePage.newPostText=text;
-        this._callSubscriber();
-    },
-
-    addPost(postMessage) {
-        debugger;
-        let newPost = {
-            id: 3,
-            message: postMessage,
-            likesCount: 0
-        };
-
-        this.getState().profilePage.posts.push(newPost);
-        this.getState().profilePage.newPostText='';
-        this._callSubscriber();
-    },
-
     subscribe(observer) {
         this._callSubscriber = observer;
     },
 
-    _callSubscriber() {
-        console.log('State changed');
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 3,
+                message: this.getState().profilePage.newPostText,
+                likesCount: 0
+            };
+
+            this.getState().profilePage.posts.push(newPost);
+            this.getState().profilePage.newPostText='';
+            this._callSubscriber();
+
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this.getState().profilePage.newPostText=action.newPostText;
+            this._callSubscriber();
+
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {
+                id: this.getState().dialogsPage.messages.length,
+                message: this.getState().dialogsPage.newMessageText,
+                sender:'Me',
+                income: false
+            };
+
+            this.getState().dialogsPage.messages.push(newMessage);
+            this.getState().dialogsPage.newMessageText = '';
+            this._callSubscriber();
+
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this.getState().dialogsPage.newMessageText=action.newMessageText;
+            this._callSubscriber();
+        }
     }
 
 };

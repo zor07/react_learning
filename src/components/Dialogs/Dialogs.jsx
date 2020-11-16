@@ -16,12 +16,16 @@ const Dialogs = (props) => {
 
     let onChangeNewMessageText = () => {
         let text = newMessageElement.current.value;
-        props.updateNewMessageText(text);
-    }
+        props.dispatch({
+            type: 'UPDATE-NEW-MESSAGE-TEXT',
+            newMessageText: text
+        });
+    };
 
     let sendMessage = () => {
-        let text = newMessageElement.current.value;
-        props.sendMessage(text);
+        props.dispatch({
+           type: 'SEND-MESSAGE'
+        });
     };
 
     return (
@@ -29,7 +33,7 @@ const Dialogs = (props) => {
             <div className={css.dialogItems}>
                 {dialogElements}
             </div>
-            <div className={css.vl}></div>
+            <div className={css.vl}/>
             <div className={css.messages}>
                 {messageElements}
                 <div><textarea rows={10}
