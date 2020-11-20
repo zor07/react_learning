@@ -13,10 +13,8 @@ const Dialogs = (props) => {
     let messageElements = props.state.messages
         .map(msg => <Message state={msg}/>)
 
-    let newMessageElement = React.createRef();
-
-    let onChangenewMessageBody = () => {
-        let text = newMessageElement.current.value;
+    let onNewMessageBodyChange = (e) => {
+        let text = e.target.value;
         props.dispatch(updateNewMessageBodyCreator(text));
     };
 
@@ -34,9 +32,8 @@ const Dialogs = (props) => {
                 {messageElements}
                 <div><textarea rows={10}
                                cols={100}
-                               ref={newMessageElement}
                                value={props.state.newMessageBody}
-                               onChange={onChangenewMessageBody} /></div>
+                               onChange={onNewMessageBodyChange} /></div>
                 <div><button onClick={sendMessage}>Send message</button></div>
             </div>
         </div>
