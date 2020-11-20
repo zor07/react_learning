@@ -64,7 +64,6 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this.getState().profilePage.newPostText=action.newPostText;
             this._callSubscriber();
-
         } else if (action.type === SEND_MESSAGE) {
             let newMessage = {
                 id: this.getState().dialogsPage.messages.length,
@@ -78,7 +77,7 @@ let store = {
             this._callSubscriber();
 
         } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this.getState().dialogsPage.newMessageBody=action.newMessageText;
+            this.getState().dialogsPage.newMessageBody=action.newMessageBody;
             this._callSubscriber();
 
         }
@@ -86,12 +85,12 @@ let store = {
 
 };
 
-export const sendMessageActionCreator = () => ({
+export const sendMessageCreator = () => ({
     type: SEND_MESSAGE
 });
-export const updateNewMessageTextActionCreator = (text) => ({
+export const updateNewMessageBodyCreator = (text) => ({
     type: UPDATE_NEW_MESSAGE_BODY,
-    newMessageText: text
+    newMessageBody: text
 });
 export const addPostActionCreator = () => ({
     type: ADD_POST
