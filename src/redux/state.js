@@ -1,5 +1,5 @@
 
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
@@ -27,7 +27,7 @@ let store = {
                 {id: 5, message: 'Это твоя лучшая зима...', sender:'Pasha', income: true},
                 {id: 6, message: 'Все хорошо?', sender:'Me', income: false}
             ],
-            newMessageText:''
+            newMessageBody:''
         },
         sidebar: {
             friendList: [
@@ -68,17 +68,17 @@ let store = {
         } else if (action.type === SEND_MESSAGE) {
             let newMessage = {
                 id: this.getState().dialogsPage.messages.length,
-                message: this.getState().dialogsPage.newMessageText,
+                message: this.getState().dialogsPage.newMessageBody,
                 sender:'Me',
                 income: false
             };
 
             this.getState().dialogsPage.messages.push(newMessage);
-            this.getState().dialogsPage.newMessageText = '';
+            this.getState().dialogsPage.newMessageBody = '';
             this._callSubscriber();
 
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this.getState().dialogsPage.newMessageText=action.newMessageText;
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this.getState().dialogsPage.newMessageBody=action.newMessageText;
             this._callSubscriber();
 
         }
@@ -90,7 +90,7 @@ export const sendMessageActionCreator = () => ({
     type: SEND_MESSAGE
 });
 export const updateNewMessageTextActionCreator = (text) => ({
-    type: UPDATE_NEW_MESSAGE_TEXT,
+    type: UPDATE_NEW_MESSAGE_BODY,
     newMessageText: text
 });
 export const addPostActionCreator = () => ({
