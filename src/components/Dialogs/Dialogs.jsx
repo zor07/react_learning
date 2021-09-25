@@ -2,28 +2,37 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
+
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id;
+    let name = props.name;
+
+    return (
+        <div className={s.dialog}>
+            <NavLink activeClassName={s.active} to={path}>{name}</NavLink>
+        </div>
+    );
+}
+
+const Message = (props) => {
+    return <div className={s.message}>{props.message}</div>;
+}
+
 const Dialogs = () => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogItems}>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.active} to='/dialogs/1'>Anna</NavLink>
-                </div>
-                <div className={s.dialog + ' ' + s.active}>
-                    <NavLink activeClassName={s.active} to='/dialogs/2'>Kristine</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.active} to='/dialogs/3'>Ammy</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink activeClassName={s.active} to='/dialogs/4'>Sasha</NavLink>
-                </div>
+                <DialogItem name='Anna' id='1'/>
+                <DialogItem name='Kristine' id='2'/>
+                <DialogItem name='Ammy' id='3'/>
+                <DialogItem name='Sasha' id='4'/>
             </div>
-            <div className={s.separatorLine} />
+            <div className={s.separatorLine}/>
             <div className={s.messages}>
-                <div className={s.message}>Hi</div>
-                <div className={s.message}>Hello</div>
-                <div className={s.message}>Bye!</div>
+                <Message message='Hi'/>
+                <Message message='Hello'/>
+                <Message message='Bye!'/>
+                <Message message='Bye!'/>
             </div>
         </div>
     );
