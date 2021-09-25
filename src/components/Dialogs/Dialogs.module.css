@@ -1,0 +1,26 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 1fr 9fr;
+}
+
+.dialogItems .dialog {
+    padding: 20px;
+}
+
+.dialogItems .active {
+    color: #D0BCD5;
+}
+
+.separatorLine {
+    border-left: 4px solid black;
+    height: 100%;
+}
+
+.messages {
+    padding: 20px;
+}
+
+.message {
+
+}
+
