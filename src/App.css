@@ -2,15 +2,22 @@
   width: 1200px;
   margin: 0 auto;
   display: grid;
+  grid-gap: 10px;
   grid-template-areas:
     "h h"
     "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  /*grid-gap: 10px;*/
 }
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: crimson;
+  background-color: #837598;
+}
+
+html, body {
+  height: 100%;
+  background: url(https://integratednetworksystems.net/wp-content/uploads/2014/01/INS_background.jpg);
+  background-position-x: center;
+  background-position-y: center;
 }

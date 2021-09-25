@@ -5,7 +5,7 @@ import MyPosts from "./MyPosts/MyPosts";
 const Profile = () => {
     return <div className={s.content}>
         <div>
-            <img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/>
+            <img src='https://sisigo.info/uploads/posts/2021-03/1615943866_25-p-bdsm-svyazivanie-erotika-27.jpg'/>
         </div>
         <div>
             ava + description
