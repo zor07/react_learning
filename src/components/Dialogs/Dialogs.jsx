@@ -18,15 +18,17 @@ const Message = (props) => {
     return <div className={s.message}>{props.message}</div>;
 }
 
-let dialogsData = [
+let dialogs = [
     {id:'1', name:'Anna'},
     {id:'2', name:'Kristine'},
     {id:'3', name:'Ammy'},
     {id:'4', name:'Sasha'},
-    {id:'5', name:'Vika'}
+    {id:'5', name:'Vika'},
+    {id:'6', name:'Victor'},
+
 ]
 
-let messagesData = [
+let messages = [
     {id:'1', message:'Anna'},
     {id:'2', message:'Hi'},
     {id:'3', message:'Hello'},
@@ -34,17 +36,21 @@ let messagesData = [
     {id:'5', message:'Bye'}
 ]
 
+let dialogsElements = dialogs
+    .map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
+
+let messagesElements = messages
+    .map(message => <Message message={message.message} />);
+
 const Dialogs = () => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogItems}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
+                { dialogsElements }
             </div>
             <div className={s.separatorLine}/>
             <div className={s.messages}>
-                <Message message={messagesData[0].message} />
-                <Message message={messagesData[1].message} />
+                { messagesElements }
             </div>
         </div>
     );
