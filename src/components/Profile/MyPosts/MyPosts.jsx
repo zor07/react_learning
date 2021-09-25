@@ -3,15 +3,13 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 
 
-let posts = [
-    {id: '1', message: 'Spank me!', likesCount: '15'},
-    {id: '1', message: 'Please, daddy!', likesCount: '2'}
-]
+const MyPosts = (props) => {
 
-let postElements = posts
-    .map(post => <Post message={post.message} likesCount={post.likesCount}/>)
+    let posts = props.posts;
 
-const MyPosts = () => {
+    let postElements = posts
+        .map(post => <Post message={post.message} likesCount={post.likesCount}/>)
+
     return (
         <div className={s.postsBlock}>
             <h3> My Posts</h3>
