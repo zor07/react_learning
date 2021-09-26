@@ -1,4 +1,5 @@
 .dialogs {
+    height: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr 9fr;
 }
@@ -20,6 +21,7 @@
 
 .separatorLine {
     background-color: rgba(29,1,0,0.92);
+    height: 100%;
     width: 10px;
 }
 
