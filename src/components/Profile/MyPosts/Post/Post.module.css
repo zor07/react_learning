@@ -1,10 +1,14 @@
 .item {
-    color: black;
     margin-top:10px;
 }
 
-.item img {
+.avatar img {
     width: 50px;
     height: 50px;
     border-radius: 30px;
+}
+
+.likeBlock img {
+    width: 20px;
+    height: 20px;
 }

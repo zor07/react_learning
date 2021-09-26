@@ -12,11 +12,13 @@
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: #837598;
+  background-color: #53131E;
+  box-shadow: -2px -3px 10px black;
 }
 
 html, body {
   height: 100%;
+  color: #9c978f;
   background: url(https://integratednetworksystems.net/wp-content/uploads/2014/01/INS_background.jpg);
   background-position-x: center;
   background-position-y: center;

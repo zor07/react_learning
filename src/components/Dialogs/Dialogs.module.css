@@ -8,18 +8,18 @@
 }
 
 .dialogItems a {
-    color: black;
+    color: rgba(156, 151, 143, 0.73);
     text-decoration: none;
 }
 
 .dialogItems a.active {
-    color: #D0BCD5;
+    color: #F3D9DC;
     text-decoration: none;
 
 }
 
 .separatorLine {
-    background-color: rgba(36, 0, 0, 0.2);
+    background-color: rgba(29,1,0,0.92);
     width: 10px;
 }
 
