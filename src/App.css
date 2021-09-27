@@ -23,3 +23,9 @@ html, body {
   background-position-x: center;
   background-position-y: center;
 }
+
+textarea, button {
+  border-color: #58554f;
+  color: #9c978f;
+  background-color: #3b0d14;
+}

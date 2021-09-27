@@ -11,7 +11,7 @@ const Dialogs = (props) => {
         .map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
 
     let messagesElements = props.state.messages
-        .map(message => <Message message={message.message} />);
+        .map(message => <Message message={message.message} type={message.type} sender={message.sender}/>);
 
     return (
         <div className={s.dialogs}>
@@ -21,6 +21,12 @@ const Dialogs = (props) => {
             <div className={s.separatorLine}/>
             <div className={s.messages}>
                 { messagesElements }
+                <div>
+                    <textarea rows={5} cols={100}/>
+                </div>
+                <div>
+                    <button>Send Message</button>
+                </div>
             </div>
         </div>
     );

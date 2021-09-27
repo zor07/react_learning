@@ -1,8 +1,20 @@
-import s from "./../Dialogs.module.css";
+import s from "./Message.module.css";
 import React from "react";
 
 const Message = (props) => {
-    return <div className={s.message}>{props.message}</div>;
+    let type;
+    if (props.type === 'incoming') {
+        type = s.incoming
+    } else {
+        type = s.outgoing
+    }
+
+    return <div className={s.messageBox}>
+        <div className={type}>
+            <b>{props.sender}:</b><br/>
+            {props.message}
+        </div>
+    </div>
 }
 
 export default Message;

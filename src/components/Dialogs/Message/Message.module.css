@@ -1,0 +1,21 @@
+.messageBox {
+    border: 1px solid rgba(29,1,0,0.92);
+    margin: 15px;
+    display: grid;
+    grid-template-columns: 12fr;
+    border-radius: 25px;
+    color: #9c978f;
+    background-color: rgba(59, 13, 20, 0.48);
+    padding:10px;
+    align-self: center;
+}
+
+.incoming {
+    justify-self: start;
+    text-align: left;
+}
+
+.outgoing {
+    justify-self: end;
+    text-align: right;
+}
