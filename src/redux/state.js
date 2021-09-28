@@ -1,25 +1,27 @@
+import {rerenderEntireTree} from "../render";
+
 let state = {
     profilePage: {
         posts: [
-            {id: '1', message: 'Spank me!', likesCount: '15'},
-            {id: '1', message: 'Please, daddy!', likesCount: '2'}
+            {id: 1, message: 'Spank me!', likesCount: 15},
+            {id: 1, message: 'Please, daddy!', likesCount: 2}
         ]
     },
     dialogsPage: {
         dialogs: [
-            {id: '1', name: 'Anna'},
-            {id: '2', name: 'Kristine'},
-            {id: '3', name: 'Ammy'},
-            {id: '4', name: 'Sasha'},
-            {id: '5', name: 'Vika'},
-            {id: '6', name: 'Victor'},
+            {id: 1, name: 'Anna'},
+            {id: 2, name: 'Kristine'},
+            {id: 3, name: 'Ammy'},
+            {id: 4, name: 'Sasha'},
+            {id: 5, name: 'Vika'},
+            {id: 6, name: 'Victor'},
         ],
         messages: [
-            {id: '1', sender: 'Me', type: 'outgoing', message: 'Anna'},
-            {id: '2', sender: 'Me', type: 'outgoing', message: 'Hi'},
-            {id: '3', sender: 'Anna', type: 'incoming', message: 'Hello'},
-            {id: '4', sender: 'Me', type: 'outgoing', message: 'Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message.'},
-            {id: '5', sender: 'Anna', type: 'incoming', message: 'Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message.'},
+            {id: 1, sender: 'Me', type: 'outgoing', message: 'Anna'},
+            {id: 2, sender: 'Me', type: 'outgoing', message: 'Hi'},
+            {id: 3, sender: 'Anna', type: 'incoming', message: 'Hello'},
+            {id: 4, sender: 'Me', type: 'outgoing', message: 'Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message.'},
+            {id: 5, sender: 'Anna', type: 'incoming', message: 'Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message.'},
 
         ]
     },
@@ -33,5 +35,30 @@ let state = {
         ]
     }
 }
+
+
+export let addMessage = (messageText) => {
+    let message = {
+        id: 1,
+        sender: 'Me',
+        type: 'outgoing',
+        message: messageText
+    }
+
+    state.dialogsPage.messages.push(message);
+    rerenderEntireTree(state);
+}
+
+export let addPost = (postMessage) => {
+    let post = {
+        id: 5,
+        message: postMessage,
+        likesCount: 0
+    }
+
+    state.profilePage.posts.push(post);
+    rerenderEntireTree(state);
+}
+
 
 export default state;
