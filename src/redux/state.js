@@ -5,7 +5,8 @@ let state = {
         posts: [
             {id: 1, message: 'Spank me!', likesCount: 15},
             {id: 1, message: 'Please, daddy!', likesCount: 2}
-        ]
+        ],
+        newPostText:''
     },
     dialogsPage: {
         dialogs: [
@@ -20,10 +21,10 @@ let state = {
             {id: 1, sender: 'Me', type: 'outgoing', message: 'Anna'},
             {id: 2, sender: 'Me', type: 'outgoing', message: 'Hi'},
             {id: 3, sender: 'Anna', type: 'incoming', message: 'Hello'},
-            {id: 4, sender: 'Me', type: 'outgoing', message: 'Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message.'},
-            {id: 5, sender: 'Anna', type: 'incoming', message: 'Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message. Long message.'},
-
-        ]
+            {id: 3, sender: 'Me', type: 'outgoing', message: 'How do you do?'},
+            {id: 3, sender: 'Anna', type: 'incoming', message: "I'm horny as hell..." }
+        ],
+        newMessageText: ''
     },
     sidebar: {
         friends: [
@@ -35,7 +36,6 @@ let state = {
         ]
     }
 }
-
 
 export let addMessage = (messageText) => {
     let message = {
@@ -49,10 +49,10 @@ export let addMessage = (messageText) => {
     rerenderEntireTree(state);
 }
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let post = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     }
 
@@ -60,5 +60,14 @@ export let addPost = (postMessage) => {
     rerenderEntireTree(state);
 }
 
+export let updateNewPostText = (text) => {
+    state.profilePage.newPostText = text;
+    rerenderEntireTree(state);
+}
+
+export let updateNewMessageText = (text) => {
+    state.dialogsPage.newMessageText = text;
+    rerenderEntireTree(state);
+}
 
 export default state;
