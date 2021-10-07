@@ -1,28 +1,30 @@
 .dialogs {
+    height: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr 9fr;
 }
 
-.dialogs .dialogItems {
-    padding: 10px;
-}
-
 .dialogItems .dialog {
+    padding: 20px;
+}
+
+.dialogItems a {
+    color: rgba(156, 151, 143, 0.73);
     text-decoration: none;
-    color: darkblue;
 }
 
-.vl {
-    border-left: 6px solid white;
+.dialogItems a.active {
+    color: #F3D9DC;
+    text-decoration: none;
+
+}
+
+.separatorLine {
+    background-color: rgba(29,1,0,0.92);
     height: 100%;
-}
-
-.dialogItems .active {
-    color: purple;
+    width: 10px;
 }
 
 .messages {
-    padding: 10px;
+    padding: 20px;
 }
-
-

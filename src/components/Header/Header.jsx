@@ -1,9 +1,10 @@
-import React from "react";
-import css from './Header.module.css';
+import React from 'react';
+import s from './Header.module.css'
 
 const Header = () => {
-    return <header className={css.header}>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/b/be/Lineage_OS_Logo.png'/>
+    return <header className={s.header}>
+        <img src="https://static.tildacdn.com/tild3533-3066-4136-b166-656161323666/shtaf.png"/>
+        {/*<img src={'../img/output-onlinepngtools.png'}/>*/}
     </header>
 }
 

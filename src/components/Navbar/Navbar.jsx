@@ -1,27 +1,26 @@
-import React from "react";
-import css from './Navbar.module.css';
+import React from 'react';
+import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import FriendsContainer from "./Friends/FriendsContainer";
+import Friends from "./Friends/Friends";
 
-const Navbar = () => {
-    return <nav className={css.nav}>
-        <div className={css.item}>
-            <NavLink activeClassName={css.active} to='/profile'>Profile</NavLink>
+const Navbar = (props) => {
+    return <nav className={s.nav}>
+        <div className={s.item}>
+            <NavLink to='/profile' activeClassName={s.active}>Profile</NavLink>
         </div>
-        <div className={css.item}>
-            <NavLink activeClassName={css.active} to='/dialogs'>Messages</NavLink>
+        <div className={s.item}>
+            <NavLink to='/dialogs' activeClassName={s.active}>Messages</NavLink>
         </div>
-        <div className={css.item}>
-            <NavLink activeClassName={css.active} to='/news'>News</NavLink>
+        <div className={s.item}>
+            <NavLink to='/news' activeClassName={s.active}>News</NavLink>
         </div>
-        <div className={css.item}>
-            <NavLink activeClassName={css.active} to='/music'>Music</NavLink>
+        <div className={s.item}>
+            <NavLink to='/music' activeClassName={s.active}>Music</NavLink>
         </div>
-        <div className={css.item}>
-            <NavLink activeClassName={css.active} to='/settings'>Settings</NavLink>
+        <div className={s.item}>
+            <NavLink to='/settings' activeClassName={s.active}>Settings</NavLink>
         </div>
-        <FriendsContainer />
-
+        <Friends friends={props.state.friends}/>
     </nav>
 }
 

@@ -1,21 +1,24 @@
+import s from "./Friends.module.css";
 import React from "react";
-import css from './Friends.module.css'
-import User from "./User/User";
+import Friend from "./Friend/Friend";
 
-let Friends = (props) => {
+const Friends = (props) => {
 
-    let friendsElements = props.state
-        .map( (user) => <User state={user} /> );
+    let friends = props.friends;
+
+    let friendsElements = friends
+        .map(friend => <Friend name={friend.name} imgSrc={friend.imgSrc}/>)
 
     return (
-        <div className={css.friends}>
-            <h3>Friends:</h3>
-            <div className={css.friendsList}>
-                {friendsElements}
-            </div>
+        <div className={s.friends}>
+            <h4>Friends</h4>
 
+            <div className={s.friendsList}>
+                { friendsElements }
+            </div>
         </div>
-    );
+
+    )
 }
 
 export default Friends;

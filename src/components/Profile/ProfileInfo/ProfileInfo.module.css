@@ -1,7 +1,7 @@
-.descriptionContent {
-    padding: 10px;
+.content img {
+    width: 100%;
 }
 
-.descriptionText {
-    margin-top: 10px;
+.description {
+    padding:10px;
 }

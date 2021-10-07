@@ -1,9 +1,18 @@
+.friends {
+    margin-top: 100px;
+}
+
+.friends h4 {
+    color: #F3D9DC;
+}
+
 .friendsList {
     display: grid;
     grid-template-columns: 4fr 4fr 4fr;
 }
 
-.friends {
-    margin-top:100px;
-    color: cornsilk;
+.friends img {
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
 }

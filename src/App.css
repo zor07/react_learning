@@ -1,20 +1,31 @@
 .app-wrapper {
-    width: 1200px;
-    margin: 0 auto;
-
-    display: grid;
-
-    grid-template-areas:
-    "head head"
-    "nav content";
-
-    grid-gap: 10px;
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
+  width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
 }
 
 .app-wrapper-content {
-    grid-area: content;
-    background-color: lightblue;
+  grid-area: c;
+  background-color: #53131E;
+  box-shadow: -2px -3px 10px black;
 }
 
+html, body {
+  height: 100%;
+  color: #9c978f;
+  background: url(https://integratednetworksystems.net/wp-content/uploads/2014/01/INS_background.jpg);
+  background-position-x: center;
+  background-position-y: center;
+}
+
+textarea, button {
+  border-color: #58554f;
+  color: #9c978f;
+  background-color: #3b0d14;
+}

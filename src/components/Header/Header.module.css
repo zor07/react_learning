@@ -1,8 +1,10 @@
 .header {
-    grid-area: head;
-    background-color: darkslategrey;
+    grid-area: h;
+    background-color: #53131E;
+    box-shadow: -2px -3px 10px black;
 }
 
 .header img {
-    width: 100px;
+    width: 50px;
+    padding: 5px;
 }

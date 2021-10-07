@@ -1,15 +1,20 @@
+import s from "./Message.module.css";
 import React from "react";
-import css from './Message.module.css';
 
 const Message = (props) => {
-    return (
-        <div className={css.messageBox}>
-                <div className={css.message + ' ' + (props.state.income ? css.income : css.outcome)}>
-                    <b>{props.state.sender}:</b><br/>
-                    {props.state.message}
-                </div>
+    let type;
+    if (props.type === 'incoming') {
+        type = s.incoming
+    } else {
+        type = s.outgoing
+    }
+
+    return <div className={s.messageBox}>
+        <div className={type}>
+            <b>{props.sender}:</b><br/>
+            {props.message}
         </div>
-    );
-};
+    </div>
+}
 
 export default Message;
