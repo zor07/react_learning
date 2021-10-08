@@ -17,7 +17,6 @@ const Friends = (props) => {
                 { friendsElements }
             </div>
         </div>
-
     )
 }
 
