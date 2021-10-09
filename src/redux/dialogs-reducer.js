@@ -21,20 +21,26 @@ let dialogsPage = {
 }
 
 const dialogsReducer = (state = dialogsPage, action) => {
-    let stateCopy = {...state}
-    if (action.type === ADD_MESSAGE) {
-        const message = {
-            id: 1,
-            sender: 'Me',
-            type: 'outgoing',
-            message: state.newMessageText
-        }
-        stateCopy.messages = [...state.messages]
-        stateCopy.messages.push(message);
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        stateCopy.newMessageText = action.text;
+    switch (action.type) {
+        case ADD_MESSAGE:
+            const message = {
+                id: 1,
+                sender: 'Me',
+                type: 'outgoing',
+                message: state.newMessageText
+            }
+            return {
+                ...state,
+                messages: [...state.messages, message]
+            }
+        case UPDATE_NEW_MESSAGE_TEXT:
+            return {
+                ...state,
+                newMessageText: action.text
+            }
+        default:
+            return state;
     }
-    return stateCopy;
 }
 
 export const updateNewMessageTextActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, text: text})
