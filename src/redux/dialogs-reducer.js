@@ -21,6 +21,7 @@ let dialogsPage = {
 }
 
 const dialogsReducer = (state = dialogsPage, action) => {
+    let stateCopy = {...state}
     if (action.type === ADD_MESSAGE) {
         const message = {
             id: 1,
@@ -28,11 +29,12 @@ const dialogsReducer = (state = dialogsPage, action) => {
             type: 'outgoing',
             message: state.newMessageText
         }
-        state.messages.push(message);
+        stateCopy.messages = [...state.messages]
+        stateCopy.messages.push(message);
     } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        state.newMessageText = action.text;
+        stateCopy.newMessageText = action.text;
     }
-    return state;
+    return stateCopy;
 }
 
 export const updateNewMessageTextActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, text: text})
