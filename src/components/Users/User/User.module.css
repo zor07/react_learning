@@ -1,0 +1,43 @@
+.user {
+    display: grid;
+    grid-template-areas:
+        "avatar_button name_status location";
+    grid-template-columns: 2fr 8fr 2fr;
+    grid-gap: 10px;
+    border: 1px solid rgba(29,1,0,0.92);
+    border-radius: 25px;
+    color: #9c978f;
+    background-color: rgba(59, 13, 20, 0.48);
+    padding:10px;
+    margin: 15px;
+    align-self: center;
+}
+
+.avatar_button{
+    grid-area: avatar_button;
+}
+
+.name_status{
+    grid-area: name_status;
+    position: relative;
+    top: 10%;
+    left: 0%;
+}
+
+.location{
+    grid-area: location;
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+.avatar_button img{
+    width: 80px;
+    height: 80px;
+}
+
+.name {
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-style: italic;
+}

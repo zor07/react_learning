@@ -5,7 +5,6 @@ import Users from "./Users";
 
 
 let mapStateToProps = (state) => {
-    debugger
     return {
         users: state.usersPage.users
     }

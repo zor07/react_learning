@@ -2,19 +2,20 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 
-let dialogsPage = {
+let initialState = {
     users: []
 }
 
-const usersReducer = (state = dialogsPage, action) => {
+const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.userId) {
-                        u.followed = true;
+                        return {...u, followed: true}
                     }
+                    return u;
                 })
             }
         case UNFOLLOW:
@@ -22,8 +23,9 @@ const usersReducer = (state = dialogsPage, action) => {
                 ...state,
                 users: state.users.map(u => {
                     if (u.id === action.userId) {
-                        u.followed = false;
+                        return {...u, followed: false}
                     }
+                    return u;
                 })
             }
         case SET_USERS:
