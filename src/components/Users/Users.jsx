@@ -1,6 +1,8 @@
 import React from "react";
 import css from "./Users.module.css"
 import User from "./User/User";
+import * as axios from "axios";
+
 
 const Users = (props) => {
 
@@ -63,7 +65,11 @@ const Users = (props) => {
     ]
 
     if (props.users.length === 0) {
-        props.setUsers(usersData);
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            .then(response => {
+                props.setUsers(response.data.items);
+            })
+
     }
     let users = props.users
         .map(user => <User user={user}

@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./User.module.css"
+import photo from "../../../assets/images/user.png"
 
 const User = (props) => {
 
@@ -7,7 +8,7 @@ const User = (props) => {
 
     return <div className={css.user}>
         <div className={css.avatar_button}>
-            <div><img src={user.photoUrl} /></div>
+            <div><img src={user.photoUrl != null ? user.photoUrl : photo} /></div>
             <div>
                 {
                     user.followed
@@ -17,13 +18,13 @@ const User = (props) => {
             </div>
         </div>
         <div className={css.name_status}>
-            <div className={css.name}>{user.fullName}</div>
+            <div className={css.name}>{user.name}</div>
             <div>{user.status}</div>
         </div>
 
         <div className={css.location}>
-            <div>{user.location.city}</div>
-            <div>{user.location.country}</div>
+            <div>Saint-Petersburg</div>
+            <div>Russia</div>
         </div>
 
     </div>
