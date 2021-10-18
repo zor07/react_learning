@@ -1,3 +1,11 @@
-.users h3 {
+.users h3  {
     padding: 20px;
+}
+
+.pagination  {
+    padding-left: 20px;
+}
+
+.selected {
+    font-weight: bold;
 }
