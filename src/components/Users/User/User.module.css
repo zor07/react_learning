@@ -11,6 +11,7 @@
     padding:10px;
     margin: 15px;
     align-self: center;
+    height: 100%;
 }
 
 .avatar_button{
@@ -39,4 +40,10 @@
     margin-bottom: 40px;
     font-weight: bold;
     font-style: italic;
+}
+
+.status {
+    width: 300px;
+    word-wrap: break-word;
+    padding-bottom: 10px;
 }

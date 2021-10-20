@@ -8,7 +8,7 @@ const User = (props) => {
 
     return <div className={css.user}>
         <div className={css.avatar_button}>
-            <div><img src={user.photoUrl != null ? user.photoUrl : photo} /></div>
+            <div><img src={user.photos.large != null ? user.photos.large : photo} /></div>
             <div>
                 {
                     user.followed
@@ -19,7 +19,7 @@ const User = (props) => {
         </div>
         <div className={css.name_status}>
             <div className={css.name}>{user.name}</div>
-            <div>{user.status}</div>
+            <div className={css.status}>{user.status}</div>
         </div>
 
         <div className={css.location}>

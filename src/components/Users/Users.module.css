@@ -9,3 +9,7 @@
 .selected {
     font-weight: bold;
 }
+
+.pageInput {
+    width: 45px;
+}
