@@ -1,14 +1,73 @@
 import React from 'react';
-import s from './ProfileInfo.module.css'
+import css from './ProfileInfo.module.css'
+import Preloader from "../../Common/Preloader/Preloader";
+import defaultAvatar from "../../../assets/images/default_avatar.jpg"
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    const profile = props.profile;
+
+    if (!profile) {
+        return <Preloader />
+    }
+
+    const contacts = props.profile.contacts;
+
+    let avatar = profile.photos.large
+        ? <img src={profile.photos.large}/>
+        : <img src={defaultAvatar}/>
+
     return (
-        <div className={s.content}>
-            <div>
-                <img src='https://sisigo.info/uploads/posts/2021-03/1615943866_25-p-bdsm-svyazivanie-erotika-27.jpg'/>
+        <div className={css.content}>
+
+            <div className={css.row}>
+                <div className={css.avatar + ' ' + css.column}>
+                    {avatar}
+                </div>
+                <div className={css.column}>
+                    <h2>Contacts</h2>
+                    <ul>
+                        { contacts.facebook &&
+                            <li>Facebook: {contacts.facebook} </li>
+                        }
+                        { contacts.website &&
+                            <li>Website: {contacts.website}</li>
+                        }
+                        { contacts.vk &&
+                            <li>VK: {contacts.vk}</li>
+                        }
+                        { contacts.twitter &&
+                            <li>Twitter: {contacts.twitter}</li>
+                        }
+                        { contacts.instagram &&
+                            <li>Instagram: {contacts.instagram}</li>
+                        }
+                        { contacts.youtube &&
+                            <li>Youtube: {contacts.youtube}</li>
+                        }
+                        { contacts.github &&
+                            <li>Github: {contacts.github}</li>
+                        }
+                        { contacts.mainLink &&
+                            <li>Main Link: {contacts.mainLink}</li>
+                        }
+                    </ul>
+
+                </div>
             </div>
-            <div className={s.description}>
-                ava + description
+
+
+            <div className={css.description}>
+                {profile.fullName &&
+                <h2>
+                    {profile.fullName}
+                </h2>
+                }
+                {profile.aboutMe &&
+                <p>
+                    {profile.aboutMe}
+                </p>
+                }
             </div>
         </div>
     );

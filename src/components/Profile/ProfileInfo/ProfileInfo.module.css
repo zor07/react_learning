@@ -5,3 +5,19 @@
 .description {
     padding:10px;
 }
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.avatar img {
+    padding:10px;
+    width: 450px;
+}
