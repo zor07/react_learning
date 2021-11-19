@@ -10,7 +10,6 @@ const instance = axios.create({
 
 export const AUTH_API = {
     authMe() {
-        debugger
        return instance.get(`/auth/me`, { withCredentials: true})
            .then(response => response.data)
     }

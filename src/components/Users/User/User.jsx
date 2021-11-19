@@ -7,6 +7,7 @@ import {USERS_API} from "../../../api/api";
 const User = (props) => {
 
     let user = props.user;
+    let disabled = props.followingInProgress.some(id => id === user.id)
 
     return <div className={css.user}>
         <div className={css.avatar_button}>
@@ -18,21 +19,25 @@ const User = (props) => {
             <div>
                 {
                     user.followed
-                        ? <button onClick={() => {
-
+                        ? <button disabled={disabled} onClick={() => {
+                            props.toggleFollowingProgress(true, user.id)
                             USERS_API.unfollow(user.id)
                                 .then(response => {
                                     if (response.resultCode === 0) {
                                         props.unfollow(user.id)
                                     }
+                                    props.toggleFollowingProgress(false, user.id)
                                 })
+
                         }}>Unsubscribe</button>
-                        : <button onClick={() => {
+                        : <button disabled={disabled} onClick={() => {
+                            props.toggleFollowingProgress(true, user.id)
                             USERS_API.follow(user.id)
                                 .then(response => {
                                     if (response.resultCode === 0) {
                                         props.follow(user.id)
                                     }
+                                    props.toggleFollowingProgress(false, user.id)
                                 })
 
                         }}>Subscribe</button>

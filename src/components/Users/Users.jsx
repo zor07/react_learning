@@ -7,7 +7,9 @@ const Users = (props) => {
     let users = props.users
         .map(user => <User user={user}
                            follow={(userId) => props.follow(userId) }
-                           unfollow={(userId) => props.unfollow(userId)}/>)
+                           unfollow={(userId) => props.unfollow(userId)}
+                           followingInProgress={props.followingInProgress}
+                           toggleFollowingProgress={props.toggleFollowingProgress}/>)
 
     let pageInput = <input type="number"
                            className={css.pageInput}
@@ -28,4 +30,5 @@ const Users = (props) => {
     )
 
 }
+
 export default Users;
