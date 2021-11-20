@@ -8,8 +8,7 @@ const Users = (props) => {
         .map(user => <User user={user}
                            follow={(userId) => props.follow(userId) }
                            unfollow={(userId) => props.unfollow(userId)}
-                           followingInProgress={props.followingInProgress}
-                           toggleFollowingProgress={props.toggleFollowingProgress}/>)
+                           followingInProgress={props.followingInProgress}/>)
 
     let pageInput = <input type="number"
                            className={css.pageInput}
