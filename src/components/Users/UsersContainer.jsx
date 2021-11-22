@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {follow, getUsers, setCurrentPage, unfollow} from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import {Redirect} from "react-router-dom";
 
 class UsersAPIComponent extends React.Component {
 
@@ -44,6 +45,8 @@ class UsersAPIComponent extends React.Component {
     }
 
     render() {
+        if (!this.props.isAuth) return <Redirect to='/login'/>
+
         return <>
             {this.props.isFetching
                 ? <Preloader />
@@ -69,7 +72,8 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         pageSize: state.usersPage.pageSize,
         isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.auth.isAuth
     }
 }
 
