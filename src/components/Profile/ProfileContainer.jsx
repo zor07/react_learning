@@ -3,6 +3,7 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom"
 import {getProfile} from "../../redux/profile-reducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 
 class ProfileContainer extends React.Component {
@@ -23,11 +24,12 @@ let mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText,
-        profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth
+        profile: state.profilePage.profile
     }
 }
 
-let WithUrlDataProfileContainer = withRouter(ProfileContainer);
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
+
+let WithUrlDataProfileContainer = withRouter(AuthRedirectComponent);
 
 export default connect(mapStateToProps, {getProfile})(WithUrlDataProfileContainer);
