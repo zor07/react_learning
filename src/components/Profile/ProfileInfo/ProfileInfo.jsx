@@ -2,6 +2,7 @@ import React from 'react';
 import css from './ProfileInfo.module.css'
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from "../../../assets/images/default_avatar.jpg"
+import ProfileStatus from "./ProfileStatus"
 
 const ProfileInfo = (props) => {
 
@@ -68,6 +69,7 @@ const ProfileInfo = (props) => {
                     {profile.aboutMe}
                 </p>
                 }
+                <ProfileStatus status={"asdasd"}/>
             </div>
         </div>
     );
