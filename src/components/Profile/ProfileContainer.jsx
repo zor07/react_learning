@@ -10,10 +10,8 @@ import {compose} from "redux";
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
-        let userId = this.props.match.params.userId // match is object, that came from withRouter
-            ? this.props.match.params.userId
-            : 2;
-        this.props.getProfile(userId)
+        debugger
+        this.props.getProfile(this.props.match.params.userId)
     }
 
     render() {

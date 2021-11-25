@@ -1,4 +1,4 @@
-import {PROFILE_API} from "../api/api";
+import {AUTH_API, PROFILE_API} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -42,11 +42,27 @@ export const addPost = () => ({ type: ADD_POST })
 export const updateNewPostText = (text) => ({type: UPDATE_NEW_POST_TEXT, text: text})
 
 export const getProfile = (userId) => {
-    return (dispatch) => {
+    let requestProfile = (userId, dispatch) => {
         PROFILE_API.getProfile(userId)
             .then(response => {
                 dispatch(setUserProfile(response));
             })
+    }
+
+    return (dispatch) => {
+        debugger
+        if (!userId) {
+            AUTH_API.me()
+                .then(response => {
+                    if (response.resultCode === 0) {
+                        requestProfile(response.data.id, dispatch)
+                    }
+                })
+        } else {
+            requestProfile(userId, dispatch)
+        }
+
+
     }
 }
 
