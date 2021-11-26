@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
     return <header className={css.header}>
-            <img src="https://static.tildacdn.com/tild3533-3066-4136-b166-656161323666/shtaf.png"/>
+            <img alt={''} src="https://static.tildacdn.com/tild3533-3066-4136-b166-656161323666/shtaf.png"/>
 
         <div className={css.login}>
             {props.isAuth

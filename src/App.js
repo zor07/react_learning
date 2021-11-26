@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -18,16 +18,16 @@ function App() {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <Route path='/profile/:userId?' render={() => <ProfileContainer />}/>
-                    <Route path='/dialogs' render={() => <DialogsContainer />}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/users' render={() => <UsersContainer />}/>
-                    <Route path='/login' render={() => <Login />}/>
-
+                    <Routes>
+                        <Route path='/profile/:userId?' element={ <ProfileContainer />}/>
+                        <Route path='/dialogs' element={ <DialogsContainer />}/>
+                        <Route path='/news' element={ <News/>}/>
+                        <Route path='/music' element={ <Music/>}/>
+                        <Route path='/settings' element={ <Settings/>}/>
+                        <Route path='/users' element={ <UsersContainer />}/>
+                        <Route path='/login' element={ <Login />}/>
+                    </Routes>
                 </div>
-
             </div>
         </BrowserRouter>
     );

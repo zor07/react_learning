@@ -5,7 +5,7 @@ const Friend = (props) => {
     return (
         <div className={s.friend}>
             <div>
-                <img src={props.imgSrc}/>
+                <img alt={''} src={props.imgSrc}/>
             </div>
             <div>
                 {props.name}

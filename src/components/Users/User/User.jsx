@@ -11,7 +11,7 @@ const User = (props) => {
         <div className={css.avatar_button}>
             <div>
                 <NavLink to={'/profile/' + user.id}>
-                    <img src={user.photos.large != null ? user.photos.large : photo}/>
+                    <img alt={''} src={user.photos.large != null ? user.photos.large : photo}/>
                 </NavLink>
             </div>
             <div>

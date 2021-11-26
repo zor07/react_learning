@@ -15,8 +15,8 @@ const ProfileInfo = (props) => {
     const contacts = props.profile.contacts;
 
     let avatar = profile.photos.large
-        ? <img src={profile.photos.large}/>
-        : <img src={defaultAvatar}/>
+        ? <img alt={''} src={profile.photos.large}/>
+        : <img alt={''} src={defaultAvatar}/>
 
     return (
         <div className={css.content}>
