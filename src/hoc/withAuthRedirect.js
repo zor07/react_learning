@@ -1,6 +1,7 @@
 import React from "react";
-import {Route, Navigate} from "react-router-dom";
+import {Route, Navigate, Routes} from "react-router-dom";
 import {connect} from "react-redux";
+import Login from "../components/Login/Login";
 
 
 export const withAuthRedirect = (Component) => {
@@ -13,7 +14,10 @@ export const withAuthRedirect = (Component) => {
         render(){
             if (!this.props.isAuth) {
                 return (
-                        <Route path="about" render={() => <Navigate to="/login" />} />
+                    <Routes>
+                        <Route path="about" element={<Login/>} />
+                    </Routes>
+
                 )
             }
 
