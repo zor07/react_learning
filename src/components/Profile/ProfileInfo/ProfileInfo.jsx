@@ -69,7 +69,9 @@ const ProfileInfo = (props) => {
                     {profile.aboutMe}
                 </p>
                 }
-                <ProfileStatus status={"asdasd"}/>
+                <ProfileStatus status={props.status}
+                               userId={props.profile.userId}
+                               updateStatus={props.updateStatus}/>
             </div>
         </div>
     );

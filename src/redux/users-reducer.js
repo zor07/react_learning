@@ -57,7 +57,6 @@ const usersReducer = (state = initialState, action) => {
         case TOGGLE_IS_FETCHING:
             return {...state, isFetching: action.isFetching}
         case TOGGLE_IS_FOLLOWING_PRORESS:
-            debugger
             return {
                 ...state,
                 followingInProgress: action.isFetching
