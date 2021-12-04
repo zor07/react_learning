@@ -53,7 +53,11 @@ export const setStatus = (status) => ({type: SET_STATUS, status})
 export const updateStatus = (status) => {
     return (dispatch) => {
         PROFILE_API.updateStatus(status)
-            .then(response => {dispatch(setStatus(response.data.status))})
+            .then(response => {
+                if (response.resultCode === 0) {
+                    dispatch(setStatus(status))
+                }
+            })
     }
 }
 
