@@ -1,12 +1,11 @@
 import css from './FormControls.module.css'
 
-
-export const Textarea = (props) => {
+const FormControl = (props) => {
     const hasError = props.meta.touched && props.meta.error;
     return (
         <div className={css.formControl + " " + (hasError ? css.error : "")}>
             <div>
-                <textarea {...props.input} {...props}/>
+                {props.children}
             </div>
             <div>
                 {hasError && <span>{props.meta.error}</span>}
@@ -15,18 +14,12 @@ export const Textarea = (props) => {
     )
 }
 
+export const Textarea = (props) => {
+    return <FormControl {...props}><textarea {...props.input} {...props} /></FormControl>
+}
+
 export const Input = (props) => {
-    const hasError = props.meta.touched && props.meta.error;
-    return (
-        <div className={css.formControl + " " + (hasError ? css.error : "")}>
-            <div>
-                <input {...props.input} {...props}/>
-            </div>
-            <div>
-                {hasError && <span>{props.meta.error}</span>}
-            </div>
-        </div>
-    )
+    return <FormControl {...props}><input {...props.input} {...props} /></FormControl>
 }
 
 
