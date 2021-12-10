@@ -5,6 +5,8 @@ import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login, logout} from "../../redux/auth-reducer";
 import {useNavigate} from "react-router-dom";
+import formCss from "../Common/FormControls/FormControls.module.css"
+import css from "./Login.module.css"
 
 
 const LoginForm = (props) => {
@@ -28,8 +30,13 @@ const LoginForm = (props) => {
                        name={'rememberMe'}
                        type='checkbox'/>
             </div>
+            { props.error &&
+            <div className={formCss.formCommonError}>
+                {props.error}
+            </div>
+            }
             <div>
-                <button type={'submit'}>Login</button>
+                <button type={'submit'} >Login</button>
             </div>
         </form>
     )
@@ -48,7 +55,7 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <div className={css.loginForm}>
             <h1>LOGIN</h1>
             <LoginReduxForm onSubmit={onSubmit}/>
         </div>
