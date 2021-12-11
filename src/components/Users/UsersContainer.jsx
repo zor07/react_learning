@@ -76,6 +76,5 @@ let mapStateToProps = (state) => {
 }
 
 export const UsersContainer = compose(
-    withAuthRedirect,
     connect(mapStateToProps,{follow, unfollow, setCurrentPage, getUsers})
 )(UsersAPIComponent)
