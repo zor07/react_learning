@@ -2,7 +2,7 @@ import React from 'react';
 import css from './ProfileInfo.module.css'
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from "../../../assets/images/default_avatar.jpg"
-import ProfileStatus from "./ProfileStatus"
+import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 
 const ProfileInfo = (props) => {
 
@@ -69,7 +69,7 @@ const ProfileInfo = (props) => {
                     {profile.aboutMe}
                 </p>
                 }
-                <ProfileStatus status={props.status}
+                <ProfileStatusOnHooks status={props.status}
                                userId={props.profile.userId}
                                updateStatus={props.updateStatus}/>
             </div>
