@@ -6,7 +6,33 @@ import {Textarea} from "../../Common/FormControls/FormControls";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 
 
-const MyPosts = (props) => {
+/*
+
+React.memo - allows to optimize render.
+
+Alternative 1:
+
+class MyComponent extends React.Component {
+    shouldComponentUpdate(prevProps, prevState) {
+        // render will be called if shouldComponentUpdate returns true
+        nextProps != this.props || nextState != this.state;
+    }
+    render() {
+        return <div></div>
+    }
+}
+
+Alternative 2:
+
+class MyComponent extends React.PureComponent {
+    render() {
+        return <div></div>
+    }
+}
+
+ */
+
+const MyPosts = React.memo(props => {
 
     let postElements = props.posts
         .map(post => <Post message={post.message} likesCount={post.likesCount}/>)
@@ -24,7 +50,7 @@ const MyPosts = (props) => {
             </div>
         </div>
     );
-}
+})
 
 const maxLength10 = maxLengthCreator(10)
 const NewPostForm = (props) => {
