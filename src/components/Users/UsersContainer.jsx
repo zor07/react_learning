@@ -10,7 +10,7 @@ class UsersAPIComponent extends React.Component {
 
     _setCurrentPage = (page) => {
         this.props.setCurrentPage(page);
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        this.props.requestUsers(page, this.props.pageSize)
     }
 
     componentDidMount() {
