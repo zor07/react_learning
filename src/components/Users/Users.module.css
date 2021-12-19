@@ -2,16 +2,8 @@
     padding: 20px;
 }
 
-.pagination  {
-    padding-left: 20px;
-}
-
 .selected {
     font-weight: bold;
-}
-
-.pageInput {
-    width: 45px;
 }
 
 button:disabled,

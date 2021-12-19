@@ -1,6 +1,7 @@
 import React from "react";
 import User from "./User/User";
 import css from "./Users.module.css";
+import {Paginator} from "../Common/Paginator/Paginator";
 
 const Users = (props) => {
 
@@ -10,20 +11,15 @@ const Users = (props) => {
                            unfollow={(userId) => props.unfollow(userId)}
                            followingInProgress={props.followingInProgress}/>)
 
-    let pageInput = <input type="number"
-                           className={css.pageInput}
-                           value={props.currentPage}
-                           onChange={props.onPageInputChange}/>;
-
     return (<div className={css.users}>
             <h3>Users</h3>
-            <div className={css.pagination}>
-                <span><button onClick={props.goToFirsPage}>{'<<'}</button>  </span>
-                <span><button onClick={props.goToPrevPage}>{'<'}</button>  </span>
-                <span><button onClick={props.goToNextPage}>{'>'}</button>  </span>
-                <span><button onClick={props.goToLastPage}>{'>>'}</button>  </span>
-                <span>Page {pageInput} of {props.pagesTotal}</span>
-            </div>
+            <Paginator currentPage={props.currentPage}
+                       onPageInputChange={props.onPageInputChange}
+                       goToFirsPage={props.goToFirsPage}
+                       goToPrevPage={props.goToPrevPage}
+                       goToNextPage={props.goToNextPage}
+                       goToLastPage={props.goToLastPage}
+                       pagesTotal={props.pagesTotal} />
             {users}
         </div>
     )
