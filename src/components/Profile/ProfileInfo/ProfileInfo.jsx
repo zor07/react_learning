@@ -4,15 +4,14 @@ import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from "../../../assets/images/default_avatar.jpg"
 import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, status, updateStatus}) => {
 
-    const profile = props.profile;
 
     if (!profile) {
         return <Preloader />
     }
 
-    const contacts = props.profile.contacts;
+    const contacts = profile.contacts;
 
     let avatar = profile.photos.large
         ? <img alt={''} src={profile.photos.large}/>
@@ -69,9 +68,9 @@ const ProfileInfo = (props) => {
                     {profile.aboutMe}
                 </p>
                 }
-                <ProfileStatusOnHooks status={props.status}
-                               userId={props.profile.userId}
-                               updateStatus={props.updateStatus}/>
+                <ProfileStatusOnHooks status={status}
+                               userId={profile.userId}
+                               updateStatus={updateStatus}/>
             </div>
         </div>
     );
