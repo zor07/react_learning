@@ -87,25 +87,24 @@ export const requestUsers = (currentPage, pageSize) => {
 }
 
 export const follow = (userId) => {
-    return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId))
-        let response = await USERS_API.follow(userId)
-        if (response.resultCode === 0) {
-            dispatch(onFollow(userId))
-        }
-        dispatch(toggleFollowingProgress(false, userId))
+    return (dispatch) => {
+        followUnfollowFlow(dispatch, userId, USERS_API.follow, onFollow)
     }
 }
 
 export const unfollow = (userId) => {
-    return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId))
-        let response = await USERS_API.unfollow(userId)
-        if (response.resultCode === 0) {
-            dispatch(onUnfollow(userId))
-        }
-        dispatch(toggleFollowingProgress(false, userId))
+    return (dispatch) => {
+        followUnfollowFlow(dispatch, userId, USERS_API.unfollow, onUnfollow)
     }
+}
+
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleFollowingProgress(true, userId))
+    let response = await apiMethod(userId)
+    if (response.resultCode === 0) {
+        dispatch(actionCreator(userId))
+    }
+    dispatch(toggleFollowingProgress(false, userId))
 }
 
 export default usersReducer;
