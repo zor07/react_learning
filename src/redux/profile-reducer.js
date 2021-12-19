@@ -50,61 +50,23 @@ export const setStatus = (status) => ({type: SET_STATUS, status})
 
 
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        PROFILE_API.updateStatus(status)
-            .then(response => {
-                if (response.resultCode === 0) {
-                    dispatch(setStatus(status))
-                }
-            })
-    }
-}
-
-export const getStatus = (userId) => (dispatch) => {
-    PROFILE_API.getStatus(userId)
-        .then(response => {
-            dispatch(setStatus(response.data))
-        })
-}
-
-export const getProfile = (userId) => (dispatch) => {
-    PROFILE_API.getProfile(userId)
-        .then(response => {
-            dispatch(setUserProfile(response));
-
-        })
-}
-
-
-export const getProfile2 = (userId) => {
-    let requestProfile = (userId, dispatch) => {
-        PROFILE_API.getProfile(userId)
-            .then(response => {
-                dispatch(setUserProfile(response));
-            })
-    }
-
-    let requestStatus = (userId, dispatch) => {
-        PROFILE_API.getStatus(userId)
-            .then(response => {
-                dispatch(setStatus(response.data))
-            })
-    }
-
-    return (dispatch) => {
-        if (!userId) {
-            AUTH_API.me()
-                .then(response => {
-                    if (response.resultCode === 0) {
-                        requestProfile(response.data.id, dispatch)
-                        requestStatus(response.data.id, dispatch)
-                    }
-                })
-        } else {
-            requestProfile(userId, dispatch)
-            requestStatus(userId, dispatch)
+    return async (dispatch) => {
+        let response = await PROFILE_API.updateStatus(status)
+        if (response.resultCode === 0) {
+            dispatch(setStatus(status))
         }
     }
 }
+
+export const getStatus = (userId) => async (dispatch) => {
+    let response = await PROFILE_API.getStatus(userId)
+    dispatch(setStatus(response.data))
+}
+
+export const getProfile = (userId) => async (dispatch) => {
+    let response = await PROFILE_API.getProfile(userId)
+    dispatch(setUserProfile(response));
+}
+
 
 export default profileReducer;

@@ -77,40 +77,34 @@ export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFe
 export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PRORESS, isFetching, userId})
 
 export const requestUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        USERS_API.getUsers(currentPage, pageSize)
-            .then(response => {
-                dispatch(toggleIsFetching(false))
-                dispatch(setUsers(response.items))
-                dispatch(setTotalUsersCount(response.totalCount))
-            })
+        let response = await USERS_API.getUsers(currentPage, pageSize)
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(response.items))
+        dispatch(setTotalUsersCount(response.totalCount))
     }
 }
 
 export const follow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
-        USERS_API.follow(userId)
-            .then(response => {
-                if (response.resultCode === 0) {
-                    dispatch(onFollow(userId))
-                }
-                dispatch(toggleFollowingProgress(false, userId))
-            })
+        let response = await USERS_API.follow(userId)
+        if (response.resultCode === 0) {
+            dispatch(onFollow(userId))
+        }
+        dispatch(toggleFollowingProgress(false, userId))
     }
 }
 
 export const unfollow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
-        USERS_API.unfollow(userId)
-            .then(response => {
-                if (response.resultCode === 0) {
-                    dispatch(onUnfollow(userId))
-                }
-                dispatch(toggleFollowingProgress(false, userId))
-            })
+        let response = await USERS_API.unfollow(userId)
+        if (response.resultCode === 0) {
+            dispatch(onUnfollow(userId))
+        }
+        dispatch(toggleFollowingProgress(false, userId))
     }
 }
 
