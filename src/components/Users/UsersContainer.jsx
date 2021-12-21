@@ -8,41 +8,8 @@ import {getCurrentPage, getFollowingInProgress, getIsFetching, getPageSize, getT
 
 class UsersAPIComponent extends React.Component {
 
-    _setCurrentPage = (page) => {
-        this.props.setCurrentPage(page);
-        this.props.requestUsers(page, this.props.pageSize)
-    }
-
     componentDidMount() {
         this.props.requestUsers(this.props.currentPage, this.props.pageSize)
-    }
-
-    goToFirsPage = () => {
-        this._setCurrentPage(1);
-    }
-
-    goToLastPage = () => {
-        this._setCurrentPage(Math.ceil(this.props.totalUsersCount / this.props.pageSize));
-    }
-
-    goToPrevPage = () => {
-        if (this.props.currentPage !== 1) {
-            this._setCurrentPage(this.props.currentPage - 1);
-        }
-    }
-
-    goToNextPage = () => {
-        if (this.props.currentPage !== Math.ceil(this.props.totalUsersCount / this.props.pageSize)) {
-            this._setCurrentPage(this.props.currentPage + 1);
-            console.log(this.props.currentPage)
-        }
-    }
-
-    onPageInputChange = (e) => {
-        let newPage = parseInt(e.target.value);
-        if (newPage >= 1 && newPage <= Math.ceil(this.props.totalUsersCount / this.props.pageSize)) {
-            this._setCurrentPage(newPage);
-        }
     }
 
     render() {
@@ -53,13 +20,11 @@ class UsersAPIComponent extends React.Component {
                          follow={this.props.follow}
                          unfollow={this.props.unfollow}
                          followingInProgress={this.props.followingInProgress}
+                         // paginator
+                         requestUsers={this.props.requestUsers}
                          currentPage={this.props.currentPage}
-                         pagesTotal={Math.ceil(this.props.totalUsersCount / this.props.pageSize)}
-                         onPageInputChange={this.onPageInputChange}
-                         goToFirsPage={this.goToFirsPage}
-                         goToPrevPage={this.goToPrevPage}
-                         goToNextPage={this.goToNextPage}
-                         goToLastPage={this.goToLastPage}/>}
+                         pageSize={this.props.pageSize}
+                         totalUsersCount={this.props.totalUsersCount}/>}
         </>
     }
 }

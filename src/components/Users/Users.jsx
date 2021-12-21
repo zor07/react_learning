@@ -13,13 +13,10 @@ const Users = (props) => {
 
     return (<div className={css.users}>
             <h3>Users</h3>
-            <Paginator currentPage={props.currentPage}
-                       onPageInputChange={props.onPageInputChange}
-                       goToFirsPage={props.goToFirsPage}
-                       goToPrevPage={props.goToPrevPage}
-                       goToNextPage={props.goToNextPage}
-                       goToLastPage={props.goToLastPage}
-                       pagesTotal={props.pagesTotal} />
+            <Paginator requestItems={props.requestUsers}
+                       currentPage={props.currentPage}
+                       pageSize={props.pageSize}
+                       totalItemsCount={props.totalUsersCount}/>
             {users}
         </div>
     )
