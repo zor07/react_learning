@@ -62,7 +62,7 @@ const AppContainer = compose(
 
 const AppMain = () => {
     return <Provider store={store}>
-        {/*Only for demo purpose on gh pages. Use Browser router on prod*/}
+        {/* Only for demo purpose on gh pages. Use Browser router on prod */}
         <HashRouter>
             <AppContainer/>
         </HashRouter>
