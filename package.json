@@ -2,7 +2,7 @@
   "name": "react-000",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://zor07.github.io/react_learning",
+  "homepage": "https://zor07.github.io/react_learning/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^12.1.2",
