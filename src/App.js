@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import {UsersContainer} from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -62,9 +62,10 @@ const AppContainer = compose(
 
 const AppMain = () => {
     return <Provider store={store}>
-        <BrowserRouter>
+        {/*Only for demo purpose on gh pages. Use Browser router on prod*/}
+        <HashRouter>
             <AppContainer/>
-        </BrowserRouter>
+        </HashRouter>
     </Provider>
 }
 
