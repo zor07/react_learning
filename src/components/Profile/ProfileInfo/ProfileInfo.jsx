@@ -4,7 +4,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from "../../../assets/images/default_avatar.jpg"
 import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 
-const ProfileInfo = ({profile, status, updateStatus}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
 
     if (!profile) {
@@ -13,16 +13,25 @@ const ProfileInfo = ({profile, status, updateStatus}) => {
 
     const contacts = profile.contacts;
 
-    let avatar = profile.photos.large
-        ? <img alt={''} src={profile.photos.large}/>
-        : <img alt={''} src={defaultAvatar}/>
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length > 0) {
+            savePhoto(e.target.files[0])
+        }
+    }
 
+    debugger
     return (
         <div className={css.content}>
 
             <div className={css.row}>
                 <div className={css.avatar + ' ' + css.column}>
-                    {avatar}
+                    <img alt={''} src={(profile.photos && profile.photos.large) || defaultAvatar}/>
+                    <div>
+                        { isOwner &&
+                            <input type="file" onChange={onMainPhotoSelected}/>
+
+                        }
+                    </div>
                 </div>
                 <div className={css.column}>
                     <h2>Contacts</h2>
