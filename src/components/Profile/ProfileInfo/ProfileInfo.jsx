@@ -6,7 +6,6 @@ import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
-
     if (!profile) {
         return <Preloader />
     }
@@ -19,13 +18,12 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
         }
     }
 
-    debugger
     return (
         <div className={css.content}>
 
             <div className={css.row}>
                 <div className={css.avatar + ' ' + css.column}>
-                    <img alt={''} src={(profile.photos && profile.photos.large) || defaultAvatar}/>
+                    <img alt={''} src={profile.photos.large || defaultAvatar}/>
                     <div>
                         { isOwner &&
                             <input type="file" onChange={onMainPhotoSelected}/>

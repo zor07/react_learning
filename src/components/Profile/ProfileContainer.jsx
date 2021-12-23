@@ -9,14 +9,30 @@ import {withAuthProfileAuthRedirect} from "../../hoc/withAuthProfileRedirect";
 
 class ProfileContainer extends React.Component {
 
-    componentDidMount() {
-        let userId = this.props.params.userId;
-        if (!userId) {
-            userId = this.props.authorizedUserId;
-        }
-
+    updateProfile(userId) {
         this.props.getProfile(userId);
         this.props.getStatus(userId);
+    }
+
+    getUserId(props) {
+        let userId = props.params.userId;
+        if (!userId) {
+            userId = props.authorizedUserId;
+        }
+        return userId
+    }
+
+    componentDidMount() {
+        let userId = this.getUserId(this.props)
+        this.updateProfile(userId)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const prevUserId = this.getUserId(prevProps)
+        const userId = this.getUserId(this.props)
+        if (prevUserId !== userId) {
+            this.updateProfile(userId)
+        }
     }
 
     render() {
@@ -32,8 +48,7 @@ let mapStateToProps = (state) => {
         newPostText: state.profilePage.newPostText,
         profile: state.profilePage.profile,
         status: state.profilePage.status,
-        authorizedUserId: state.auth.userId,
-
+        authorizedUserId: state.auth.userId
     }
 }
 

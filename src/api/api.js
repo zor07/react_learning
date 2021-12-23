@@ -46,7 +46,7 @@ export const PROFILE_API = {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
-        })
+        }).then(response => response.data)
     }
 }
 
