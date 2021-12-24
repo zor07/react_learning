@@ -4,7 +4,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from "../../../assets/images/default_avatar.jpg"
 import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 import ProfileData from "./ProfileData";
-import ProfileDataForm from "./ProfileForm";
+import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
@@ -22,6 +22,12 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
     const goToEditMode = () => {
         setEditMode(true)
+    }
+
+    const onSubmitProfileDataForm = (profileFormData) => {
+        debugger
+        console.log(profileFormData)
+        // saveProfileData(profileData)
     }
 
     return (
@@ -44,7 +50,9 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
                 <div className={css.column}>
                     {
                         editMode
-                            ? <ProfileDataForm />
+                            ? <ProfileDataForm initialValues={profile}
+                                               onSubmit={onSubmitProfileDataForm}
+                                               profile={profile} />
                             : <ProfileData profile={profile}
                                            goToEditMode={goToEditMode}
                                            isOwner={isOwner}/>

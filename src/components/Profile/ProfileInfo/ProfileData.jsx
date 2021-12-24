@@ -23,7 +23,7 @@ const ProfileData = ({profile, goToEditMode, isOwner}) => {
                 }
             </div>
             {isOwner &&
-            <div className={css.editButton}>
+            <div className={css.editSaveButton}>
                 <button onClick={goToEditMode}>Edit</button>
             </div>
             }
