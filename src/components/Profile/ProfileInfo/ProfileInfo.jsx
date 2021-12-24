@@ -6,7 +6,7 @@ import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 import ProfileData from "./ProfileData";
 import ProfileDataForm from "./ProfileDataForm";
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfileData}) => {
 
     const [editMode, setEditMode] = useState(false)
 
@@ -26,8 +26,10 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
     const onSubmitProfileDataForm = (profileFormData) => {
         debugger
-        console.log(profileFormData)
-        // saveProfileData(profileData)
+        saveProfileData(profileFormData)
+            .then(() => {
+                setEditMode(false)
+            })
     }
 
     return (

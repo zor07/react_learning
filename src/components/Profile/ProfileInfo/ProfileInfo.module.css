@@ -6,6 +6,10 @@
     padding-left: 20px;
 }
 
+.profileDataItem {
+    padding-bottom: 5px;
+}
+
 .status {
     padding-bottom: 10px;
 }

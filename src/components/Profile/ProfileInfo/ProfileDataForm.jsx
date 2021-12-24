@@ -5,29 +5,35 @@ import {Input, Textarea} from "../../Common/FormControls/FormControls";
 import {maxLengthCreator} from "../../../utils/validators/validators";
 
 
-const maxLength50 = maxLengthCreator(10)
+const maxLength50 = maxLengthCreator(50)
 
 const ProfileDataForm = ({profile, handleSubmit}) => {
     return (
         <form onSubmit={handleSubmit}>
-
-            <div>
+            <div className={css.profileDataItem}>
+                <b>Full name: </b>
+                <Field component={Input}
+                       name={'fullName'}
+                       placeholder='Full name'
+                       validate={[maxLength50]}/>
+            </div>
+            <div className={css.profileDataItem}>
                 <b>Looking for a job: </b>
                 <Field component={Input}
                        name={'lookingForAJob'}
                        type='checkbox'/>
             </div>
-            <div>
+            <div className={css.profileDataItem}>
                 <b>My skills: </b>
                 <Field component={Textarea}
                        placeholder='My skills'
                        validate={[maxLength50]}
                        name={'lookingForAJobDescription'}/>
             </div>
-            <div>
+            <div className={css.profileDataItem}>
                 <b>About Me: </b>
                 <Field component={Textarea}
-                       placeholder='My skills'
+                       placeholder='About me'
                        validate={[maxLength50]}
                        name={'aboutMe'}/>
             </div>
@@ -48,7 +54,7 @@ const ProfileDataForm = ({profile, handleSubmit}) => {
 }
 
 const Contact = ({title}) => {
-    return <div className={css.contact}>
+    return <div className={`${css.contact} ${css.profileDataItem}`}>
         {title}:
         <Field component={Input}
                name={`contacts.${title}`}
