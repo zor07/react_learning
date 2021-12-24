@@ -1,12 +1,19 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import css from './ProfileInfo.module.css'
 
 const ProfileStatusOnHooks = (props) => {
 
     const [editMode, setEditMode] = useState(false)
     const [status, setStatus] = useState(props.status)
 
+    useEffect( () => {
+        setStatus(props.status);
+    }, [props.status] );
+
     const activateEditMode = () => {
-        setEditMode(true)
+        if (props.isOwner) {
+            setEditMode(true)
+        }
     }
 
     const deactivateEditMode = () => {
@@ -19,18 +26,18 @@ const ProfileStatusOnHooks = (props) => {
     }
 
     return (
-        <div>
+        <div className={css.status}>
             <div>
                 {!editMode &&
-                    <span onDoubleClick={activateEditMode}>{status || "----"}</span>
+                   <> <b>Status: </b> <span onDoubleClick={activateEditMode}>{status || "----"}</span> </>
                 }
             </div>
             <div>
                 {editMode &&
-                <input onBlur={deactivateEditMode}
+                <> <b>Status: </b> <input onBlur={deactivateEditMode}
                        autoFocus={true}
                        value={status}
-                       onChange={onStatusChange}/>
+                       onChange={onStatusChange}/> </>
                 }
             </div>
         </div>

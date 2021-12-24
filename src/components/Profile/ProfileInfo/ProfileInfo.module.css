@@ -1,9 +1,17 @@
-.content img {
-    width: 100%;
+.content {
+    padding: 10px
 }
 
-.description {
-    padding:10px;
+.contact {
+    padding-left: 20px;
+}
+
+.status {
+    padding-bottom: 10px;
+}
+
+.content img {
+    width: 100%;
 }
 
 .column {
@@ -18,10 +26,5 @@
 }
 
 .avatar img {
-    padding:10px;
     width: 450px;
-}
-
-.avatar input {
-    padding: 10px;
 }
