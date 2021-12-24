@@ -3,11 +3,12 @@ import css from "./ProfileInfo.module.css";
 import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../Common/FormControls/FormControls";
 import {maxLengthCreator} from "../../../utils/validators/validators";
+import formCss from "../../Common/FormControls/FormControls.module.css";
 
 
 const maxLength50 = maxLengthCreator(50)
 
-const ProfileDataForm = ({profile, handleSubmit}) => {
+const ProfileDataForm = ({profile, handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div className={css.profileDataItem}>
@@ -46,6 +47,11 @@ const ProfileDataForm = ({profile, handleSubmit}) => {
                     })
                 }
             </div>
+            { error &&
+            <div className={formCss.formCommonError}>
+                {error}
+            </div>
+            }
             <div className={css.editSaveButton}>
                 <button type={'submit'}>Save</button>
             </div>

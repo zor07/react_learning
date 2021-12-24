@@ -1,4 +1,5 @@
 import {AUTH_API, PROFILE_API} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
@@ -78,6 +79,10 @@ export const saveProfileData = (profileData) => {
         let response = await PROFILE_API.saveProfileData(profileData)
         if (response.resultCode === 0) {
             dispatch(getProfile(userId))
+        } else {
+            let message = response.messages.length > 0 ? response.messages[0] : 'Unable to save profile info'
+            dispatch(stopSubmit('edit-profile', {_error: message}))
+            return Promise.reject(message)
         }
     }
 }
