@@ -1,7 +1,7 @@
 import css from "./ProfileInfo.module.css";
 import React from "react";
 
-const ProfileData = ({profile}) => {
+const ProfileData = ({profile, goToEditMode, isOwner}) => {
     return (
         <div>
             <div>
@@ -22,6 +22,11 @@ const ProfileData = ({profile}) => {
                     })
                 }
             </div>
+            {isOwner &&
+            <div className={css.editButton}>
+                <button onClick={goToEditMode}>Edit</button>
+            </div>
+            }
         </div>
     )
 }

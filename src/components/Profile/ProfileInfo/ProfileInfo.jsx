@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import css from './ProfileInfo.module.css'
 import Preloader from "../../Common/Preloader/Preloader";
 import defaultAvatar from "../../../assets/images/default_avatar.jpg"
 import ProfileStatusOnHooks from "./ProfileStatusOnHooks";
 import ProfileData from "./ProfileData";
+import ProfileDataForm from "./ProfileForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
+
+    const [editMode, setEditMode] = useState(false)
 
     if (!profile) {
         return <Preloader/>
@@ -15,6 +18,10 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
         if (e.target.files.length > 0) {
             savePhoto(e.target.files[0])
         }
+    }
+
+    const goToEditMode = () => {
+        setEditMode(true)
     }
 
     return (
@@ -35,7 +42,14 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
                     </div>
                 </div>
                 <div className={css.column}>
-                    <ProfileData profile={profile}/>
+                    {
+                        editMode
+                            ? <ProfileDataForm />
+                            : <ProfileData profile={profile}
+                                           goToEditMode={goToEditMode}
+                                           isOwner={isOwner}/>
+                    }
+
 
                 </div>
             </div>
