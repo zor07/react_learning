@@ -9,9 +9,9 @@ import formCss from "../Common/FormControls/FormControls.module.css"
 import css from "./Login.module.css"
 
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field component={Input}
                        validate={[required]}
@@ -22,6 +22,7 @@ const LoginForm = (props) => {
                 <Field component={Input}
                        validate={[required]}
                        name={'password'}
+                       type={'password'}
                        placeholder={'Password'}/>
             </div>
             <div>
@@ -30,9 +31,13 @@ const LoginForm = (props) => {
                        name={'rememberMe'}
                        type='checkbox'/>
             </div>
-            { props.error &&
+            <div>
+                {captchaUrl && <img src={captchaUrl}/>}
+                {captchaUrl && <Field component={Input} validate={[required]} name={'captcha'} placeholder={'Enter symbols from image'} />}
+            </div>
+            { error &&
             <div className={formCss.formCommonError}>
-                {props.error}
+                {error}
             </div>
             }
             <div>
@@ -47,7 +52,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 const Login = (props) => {
     const navigate = useNavigate();
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (props.isAuth) {
@@ -57,14 +62,15 @@ const Login = (props) => {
     return (
         <div className={css.loginForm}>
             <h1>LOGIN</h1>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
         </div>
     )
 }
 
 
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 })
 
 export default connect(mapStateToProps, {login, logout})(Login)
