@@ -1,5 +1,6 @@
 import css from "./ProfileInfo.module.css";
 import React from "react";
+import cn from "classnames";
 
 const ProfileData = ({profile, goToEditMode, isOwner}) => {
     return (
@@ -33,8 +34,8 @@ const ProfileData = ({profile, goToEditMode, isOwner}) => {
 
 const Contact = ({title, value}) => {
     if (!value) return ''
-    return  <div className={`${css.contact} ${css.profileDataItem}`}>
-        <b>{title}: </b> {value}
+    return  <div className={cn(css.contact, css.profileDataItem)}>
+        <a href={value} target="_blank"><b>{title}</b> </a>
     </div>
 
 }

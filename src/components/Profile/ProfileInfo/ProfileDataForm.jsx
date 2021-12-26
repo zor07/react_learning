@@ -4,6 +4,7 @@ import {Field, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../Common/FormControls/FormControls";
 import {maxLengthCreator} from "../../../utils/validators/validators";
 import formCss from "../../Common/FormControls/FormControls.module.css";
+import cn from "classnames";
 
 
 const maxLength50 = maxLengthCreator(50)
@@ -60,7 +61,7 @@ const ProfileDataForm = ({profile, handleSubmit, error}) => {
 }
 
 const Contact = ({title}) => {
-    return <div className={`${css.contact} ${css.profileDataItem}`}>
+    return <div className={cn(css.contact, css.profileDataItem)}>
         {title}:
         <Field component={Input}
                name={`contacts.${title}`}
